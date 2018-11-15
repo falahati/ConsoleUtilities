@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <Version>1.0.0.3</Version>
+    <Company>falahati.net</Company>
+    <Description>ConsoleUtilities is a simple set of tools for creating console navigation, tables and terminals.</Description>
+    <Authors>Soroush Falahati</Authors>
+    <Copyright>Copyright © Soroush Falahati 2018 (falahati.net)</Copyright>
+    <Platforms>AnyCPU</Platforms>
+    <Product>ConsoleUtilities</Product>
+    <PackageProjectUrl>https://github.com/falahati/ConsoleUtilities</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/falahati/ConsoleUtilities/blob/master/LICENSE</PackageLicenseUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Title>Console Utilities</Title>
+    <PackageId>BasicConsoleUtilities</PackageId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <BumpLabel>dev</BumpLabel>
+    <BumpLabelDigits>4</BumpLabelDigits>
+    <OutputPath>..\Debug</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <BumpRevision>True</BumpRevision>
+    <BumpResetLabel>dev</BumpResetLabel>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <OutputPath>..\Release</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference PrivateAssets="all" Include="MSBump" Version="2.3.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>
