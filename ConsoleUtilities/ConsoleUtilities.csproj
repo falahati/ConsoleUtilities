@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
-    <Version>1.0.0.3</Version>
+    <Version>1.0.0.6</Version>
     <Company>falahati.net</Company>
     <Description>ConsoleUtilities is a simple set of tools for creating console navigation, tables and terminals.</Description>
     <Authors>Soroush Falahati</Authors>
