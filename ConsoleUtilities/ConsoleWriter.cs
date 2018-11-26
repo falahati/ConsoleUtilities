@@ -44,33 +44,45 @@ namespace ConsoleUtilities
 
         public string PrintQuestion(string message)
         {
-            var response = "";
-            var color = Console.ForegroundColor;
-
-            while (string.IsNullOrWhiteSpace(response))
-            {
-                WriteColoredText(Theme.QuestionPrefix + message + ": ", Theme.QuestionColor);
-                Console.ForegroundColor = Theme.UserInputColor;
-                response = Console.ReadLine();
-            }
-
-            Console.ForegroundColor = color;
-
-            return response.Trim();
+            return PrintQuestion<string>(message);
         }
 
         // ReSharper disable once ExcessiveIndentation
         // ReSharper disable once MethodTooLong
         public T PrintQuestion<T>(string message)
         {
+            var postFix = ":";
+
+            if (typeof(T) == typeof(bool))
+            {
+                postFix = "?";
+            }
+
+            message = $"{Theme.QuestionPrefix}{message}{postFix} ";
+
             while (true)
             {
-                var response = PrintQuestion(message);
+                WriteColoredText(message, Theme.QuestionColor);
+                var response = ReadColoredTextLine(Theme.UserInputColor)?.Trim();
+
+                if (string.IsNullOrWhiteSpace(response))
+                {
+                    continue;
+                }
 
                 try
                 {
                     if (typeof(T) == typeof(bool))
                     {
+                        if (response.Equals("yes", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            response = "true";
+                        }
+                        else if (response.Equals("no", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            response = "false";
+                        }
+
                         if (bool.TryParse(response, out var result))
                         {
                             return (T) Convert.ChangeType(result, typeof(T));
