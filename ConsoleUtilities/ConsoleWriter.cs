@@ -195,6 +195,27 @@ namespace ConsoleUtilities
             WriteColoredTextLine(Theme.WarningPrefix + message, Theme.WarningColor);
         }
 
+
+        public virtual int ReadColoredText(ConsoleColor color)
+        {
+            var consoleColor = Console.ForegroundColor;
+            Console.ForegroundColor = color;
+            var retVal = Console.Read();
+            Console.ForegroundColor = consoleColor;
+
+            return retVal;
+        }
+
+        public virtual string ReadColoredTextLine(ConsoleColor color)
+        {
+            var consoleColor = Console.ForegroundColor;
+            Console.ForegroundColor = color;
+            var retVal = Console.ReadLine();
+            Console.ForegroundColor = consoleColor;
+
+            return retVal;
+        }
+
         public virtual void WriteColoredText(string str, ConsoleColor color)
         {
             var consoleColor = Console.ForegroundColor;
